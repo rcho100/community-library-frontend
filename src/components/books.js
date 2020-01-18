@@ -11,4 +11,9 @@ class Books {
         .then(() => this.render())
     }
 
+    render() {
+        const booksContainer = document.querySelector("main")
+        booksContainer.innerHTML = "This is where the books will be displayed"
+        console.log(this.books)
+    }
 }
