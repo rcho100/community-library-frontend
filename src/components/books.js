@@ -6,6 +6,9 @@ class Books {
     }
 
     fetchAndLoadBooks() {
-        this.adapter.getBooks().then(notes => console.log(notes))
+        this.adapter.getBooks()
+        .then(booksData => booksData.forEach(book => this.books.push(book)))
+        .then(() => this.render())
     }
+
 }
