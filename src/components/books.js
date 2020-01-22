@@ -2,7 +2,12 @@ class Books {
     constructor() {
         this.books = []
         this.adapter = new BooksAdapter()
+        this.initBindingsAndEventListeners()
         this.fetchAndLoadBooks()
+    }
+
+    initBindingsAndEventListeners() {
+        this.booksContainer = document.querySelector("main")
     }
 
     fetchAndLoadBooks() {
@@ -12,10 +17,7 @@ class Books {
     }
 
     render() {
-        const booksContainer = document.querySelector("main")
         console.log(this.books)
-        
-        booksContainer.innerHTML = this.books.map(book => `<li>${book.title} - ${book.author}</li>`).join("")
-
+        this.booksContainer.innerHTML = this.books.map(book => `<li>${book.title} - ${book.author}</li>`).join("")
     }
 }
