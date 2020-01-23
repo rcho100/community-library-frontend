@@ -1,0 +1,12 @@
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+ul {
+    display: flex;
+}
+
+li {
+    list-style: none;
+}
