@@ -7,7 +7,7 @@ class Books {
     }
 
     initBindingsAndEventListeners() {
-        this.booksContainer = document.querySelector("main")
+        this.booksContainer = document.querySelector(".books-container")
     }
 
     fetchAndLoadBooks() {
