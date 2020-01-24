@@ -8,6 +8,7 @@ class Books {
 
     initBindingsAndEventListeners() {
         this.booksContainer = document.querySelector(".books-container")
+        this.tableBody = document.querySelector(".table-body")
     }
 
     fetchAndLoadBooks() {
@@ -18,6 +19,16 @@ class Books {
 
     render() {
         console.log(this.books)
-        this.booksContainer.innerHTML = this.books.map(book => `<li>${book.title} - ${book.author}</li>`).join("")
+            
+        const tableData = this.books.map(book => {
+            return `
+            <tr>
+              <td>${book.title}</td>
+              <td>${book.author}</td>
+              <td>${book.available}</td>
+            </tr>`
+        }).join('')
+
+        this.tableBody.innerHTML = tableData
     }
 }
