@@ -18,6 +18,22 @@ li {
     list-style: none;
 }
 
+.entry-forms {
+    width: 400px;
+    padding: 20px;
+    margin: 8% auto 0;
+    text-align: center;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.login-form {
+    width: 300px;
+    padding: 20px;
+    margin: 8% auto 0;
+    text-align: center;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+}
+
 .signup-form {
     width: 300px;
     padding: 20px;
@@ -27,6 +43,11 @@ li {
 }
 
 .signup-form input {
+    display: block;
+    margin: auto;
+}
+
+.login-form input {
     display: block;
     margin: auto;
 }
