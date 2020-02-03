@@ -1,6 +1,7 @@
 class Users {
     constructor() {
         this.users = []
+        this.initBindingsAndEventListeners()
     }
 
     initBindingsAndEventListeners() {
