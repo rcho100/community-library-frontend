@@ -13,7 +13,7 @@ class Books {
 
     fetchAndLoadBooks() {
         this.adapter.getBooks()
-        .then(booksData => booksData.forEach(book => this.books.push(new Book(book))))
+        .then(data => data.data.forEach(book => this.books.push(new Book(book.attributes))))
         .then(() => this.render())
     }
 
