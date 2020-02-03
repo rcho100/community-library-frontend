@@ -9,13 +9,7 @@ class UserAdapter {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                body: JSON.stringify({
-                    user: {
-                        user: user,
-                        email: email,
-                        password: password
-                    }
-                })
+                body: JSON.stringify(signupInfo)
             }
         };
         return fetch(this.baseURL, configurationObject).then(res => res(json))
