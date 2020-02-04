@@ -12,6 +12,6 @@ class UsersAdapter {
                 body: JSON.stringify(signupInfo)
             }
         })
-        .then(res => res(json))
+        .then(res => res.json())
     }
 }
