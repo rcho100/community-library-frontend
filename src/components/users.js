@@ -1,12 +1,13 @@
 class Users {
     constructor() {
         this.users = []
+        this.adapter = new UsersAdapter()
         this.initBindingsAndEventListeners()
     }
 
     initBindingsAndEventListeners() {
         this.signupForm = document.querySelector(".signup-form")
-        this.signupForm.addEventListener('submit', this.createUser);
+        this.signupForm.addEventListener('submit', this.createUser.bind(this));
     }
 
     createUser(e) {
