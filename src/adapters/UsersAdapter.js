@@ -1,17 +1,17 @@
-class UserAdapter {
+class UsersAdapter {
     constructor() {
         this.baseURL = "http://localhost:3000/signup"
     }
 
     loginUser(signupInfo) {
-        const configurationObject = {
+        return fetch(this.baseURL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
                 body: JSON.stringify(signupInfo)
             }
-        };
-        return fetch(this.baseURL, configurationObject).then(res => res(json))
+        })
+        .then(res => res(json))
     }
 }
