@@ -24,6 +24,6 @@ class Users {
             }
         }
         this.adapter.loginUser(signupInfo)
-        .then(json => console.log(json))
+        .then(json => this.users.push(new User(json.user.data.attributes)))
     }
 }
