@@ -8,9 +8,9 @@ class UsersAdapter {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json",
-                body: JSON.stringify(signupInfo)
-            }
+                Accept: "application/json"
+            },
+            body: JSON.stringify(signupInfo)
         })
         .then(res => res.json())
     }
