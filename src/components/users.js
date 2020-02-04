@@ -23,6 +23,7 @@ class Users {
                 password: userPassword
             }
         }
-        console.log(signupInfo)
+        this.adapter.loginUser(signupInfo)
+        .then(json => console.log(json))
     }
 }
