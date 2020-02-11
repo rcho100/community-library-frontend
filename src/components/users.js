@@ -33,7 +33,16 @@ class Users {
     clearAndRender() {
         let currentUser = this.users.slice(-1)[0]
         this.container.innerHTML = `
-            <header><h3>Welcome ${currentUser.user.name}!</h3></header>
+            <header>
+                <nav>
+                    <ul>
+                        <li>Community Library</li>
+                        <li>Profile</li>
+                        <li>Signout</li>
+                    </ul>
+                <h3>Welcome ${currentUser.user.name}!</h3>
+                </nav>
+            </header>
             <main>
                 <div class="books-container">
                     <table class="main-table">
