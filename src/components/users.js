@@ -20,7 +20,7 @@ class Users {
         const userPassword = e.target.password.value
         const signupInfo = {
             user: {
-                user: userName,
+                name: userName,
                 email: userEmail,
                 password: userPassword
             }
@@ -31,10 +31,9 @@ class Users {
     }
 
     clearAndRender() {
-        let currentUser = this.users.slice(-1)
-
+        let currentUser = this.users.slice(-1)[0]
         this.container.innerHTML = `
-            <header><h3>Welcome ${currentUser.name}</h3></header>
+            <header><h3>Welcome ${currentUser.user.name}!</h3></header>
             <main>
                 <div class="books-container">
                     <table class="main-table">
