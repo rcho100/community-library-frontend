@@ -25,5 +25,10 @@ class Users {
         }
         this.adapter.loginUser(signupInfo)
         .then(json => this.users.push(new User(json.user.data.attributes)))
+        .then(() => this.clearAndRender())
+    }
+
+    clearAndRender() {
+        
     }
 }
