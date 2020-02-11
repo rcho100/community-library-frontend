@@ -33,19 +33,21 @@ class Users {
     clearAndRender() {
         let currentUser = this.users.slice(-1)
 
-        this.main.innerHTML = `
+        this.container.innerHTML = `
             <header><h3>Welcome ${currentUser.name}</h3></header>
-            <div class="books-container">
-                <table class="main-table">
-                    <thead>
-                        <th>Title</th>
-                        <th>Book</th>
-                        <th>Available</th>
-                    </thead>
-                    <tbody class="table-body">
-                    </tbody>
-                </table>
-            </div>
+            <main>
+                <div class="books-container">
+                    <table class="main-table">
+                        <thead>
+                            <th>Title</th>
+                            <th>Book</th>
+                            <th>Available</th>
+                        </thead>
+                        <tbody class="table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </main>
         `
     }
 }
