@@ -40,7 +40,7 @@ class Users {
                         <li>Profile</li>
                         <li>Signout</li>
                     </ul>
-                <h3>Welcome ${currentUser.user.name}!</h3>
+                <h3>Welcome ${currentUser.name}!</h3>
                 </nav>
             </header>
             <main>
