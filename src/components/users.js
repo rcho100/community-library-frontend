@@ -49,5 +49,7 @@ class Users {
                 </div>
             </main>
         `
+
+        let displayBooks = new Books()
     }
 }
