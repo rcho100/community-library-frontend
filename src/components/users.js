@@ -7,6 +7,8 @@ class Users {
 
     initBindingsAndEventListeners() {
         this.signupForm = document.querySelector(".signup-form")
+        this.container = document.querySelector(".container")
+
         this.signupForm.addEventListener('submit', this.createUser.bind(this));
     }
 
@@ -29,6 +31,18 @@ class Users {
     }
 
     clearAndRender() {
-        
+        this.main.innerHTML = `
+            <div class="books-container">
+                <table class="main-table">
+                    <thead>
+                        <th>Title</th>
+                        <th>Book</th>
+                        <th>Available</th>
+                    </thead>
+                    <tbody class="table-body">
+                    </tbody>
+                </table>
+            </div>
+        `
     }
 }
