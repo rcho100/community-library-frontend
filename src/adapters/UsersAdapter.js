@@ -1,10 +1,10 @@
 class UsersAdapter {
     constructor() {
-        this.baseURL = "http://localhost:3000/signup"
+        this.signupURL = "http://localhost:3000/signup"
     }
 
-    loginUser(signupInfo) {
-        return fetch(this.baseURL, {
+    signupUser(signupInfo) {
+        return fetch(this.signupURL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

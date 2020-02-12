@@ -25,7 +25,7 @@ class Users {
                 password: userPassword
             }
         }
-        this.adapter.loginUser(signupInfo)
+        this.adapter.signupUser(signupInfo)
         .then(json => this.users.push(new User(json.user.data.attributes)))
         .then(() => this.clearAndRender())
     }
