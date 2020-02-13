@@ -7,9 +7,11 @@ class Users {
 
     initBindingsAndEventListeners() {
         this.signupForm = document.querySelector(".signup-form")
+        this.loginForm = document.querySelector(".login-form")
         this.container = document.querySelector(".container")
 
         this.signupForm.addEventListener('submit', this.createUser.bind(this));
+        this.loginForm.addEventListener('submit', this.retrieveUser.bind(this));
     }
 
     createUser(e) {
@@ -28,6 +30,12 @@ class Users {
         this.adapter.signupUser(signupInfo)
         .then(json => this.users.push(new User(json.user.data.attributes)))
         .then(() => this.clearAndRender())
+    }
+
+    retrieveUser(e) {
+        e.preventDefault();
+        console.log('User is being retrieved')
+    
     }
 
     clearAndRender() {
