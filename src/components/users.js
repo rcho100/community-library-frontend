@@ -17,9 +17,9 @@ class Users {
     createUser(e) {
         e.preventDefault();
         console.log('User is being created')
-        const userName = e.target.name.value
-        const userEmail = e.target.email.value
-        const userPassword = e.target.password.value
+        let userName = e.target.name.value
+        let userEmail = e.target.email.value
+        let userPassword = e.target.password.value
         const signupInfo = {
             user: {
                 name: userName,
