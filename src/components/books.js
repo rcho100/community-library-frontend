@@ -51,6 +51,9 @@ class Books {
 
         const selectedBook = modalContent.querySelector("#selected-book")
         selectedBook.innerText = `${bookTitle} - ${bookAuthor}`
+
+        document.querySelector("#no").addEventListener('click',() => bgModal.style.display = "none")
+        document.querySelector("#yes").addEventListener('click', borrowBook.bind(this))
     }
 
 }
