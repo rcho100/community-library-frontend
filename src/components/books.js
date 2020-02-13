@@ -22,7 +22,7 @@ class Books {
             
         const tableData = this.books.map(book => {
             return `
-            <tr>
+            <tr id=${book.id}>
               <td>${book.title}</td>
               <td>${book.author}</td>
               <td>${book.available}</td>
