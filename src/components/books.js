@@ -38,6 +38,7 @@ class Books {
         let modalContent = document.querySelector(".modal-content")
         modalContent.innerHTML = `
             <p>Would you like to borrow this book?</p>
+            <p id="selected-book"></p>
             <button id="yes" type="button">Yes</button>
             <button id="no" type="button">No</button>
         `
@@ -48,6 +49,8 @@ class Books {
         const bookTitle = selectedTableRow.querySelector(".book-title").innerText
         const bookAuthor = selectedTableRow.querySelector(".book-author").innerText
 
+        const selectedBook = modalContent.querySelector("#selected-book")
+        selectedBook.innerText = `${bookTitle} - ${bookAuthor}`
     }
 
 }
