@@ -35,7 +35,18 @@ class Users {
     retrieveUser(e) {
         e.preventDefault();
         console.log('User is being retrieved')
-    
+        let userEmail = e.target.email.value
+        let userPassword = e.target.password.value
+        const loginInfo = {
+            user: {
+                email: userEmail,
+                password: userPassword
+            }
+        }
+        this.adapter.loginUser(loginInfo)
+        .then(json => this.users.push(new User(json.user.data.attributes)))
+        .then(() => this.clearAndRender())
+        .catch(error => console.log(error))
     }
 
     clearAndRender() {
