@@ -30,5 +30,8 @@ class Books {
         }).join('')
 
         this.tableBody.innerHTML = tableData
+        let tableRows = document.querySelectorAll("tr")
+        tableRows.forEach(element => element.addEventListener('dblclick', this.borrowModal.bind(this)));        
     }
+
 }
