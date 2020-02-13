@@ -41,6 +41,9 @@ class Books {
             <button id="yes" type="button">Yes</button>
             <button id="no" type="button">No</button>
         `
+        let bgModal = document.querySelector(".bg-modal")
+        bgModal.style.display = "flex"
+        
     }
 
 }
