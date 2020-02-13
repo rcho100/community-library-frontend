@@ -43,7 +43,11 @@ class Books {
         `
         let bgModal = document.querySelector(".bg-modal")
         bgModal.style.display = "flex"
-        
+
+        let selectedTableRow = e.target.parentNode
+        const bookTitle = selectedTableRow.querySelector(".book-title").innerText
+        const bookAuthor = selectedTableRow.querySelector(".book-author").innerText
+
     }
 
 }
