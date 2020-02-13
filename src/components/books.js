@@ -23,9 +23,9 @@ class Books {
         const tableData = this.books.map(book => {
             return `
             <tr id=${book.id}>
-              <td>${book.title}</td>
-              <td>${book.author}</td>
-              <td>${book.available}</td>
+              <td class="book-title">${book.title}</td>
+              <td class="book-author">${book.author}</td>
+              <td class="book-availability">${book.available}</td>
             </tr>`
         }).join('')
 
