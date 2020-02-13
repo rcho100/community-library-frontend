@@ -34,4 +34,13 @@ class Books {
         tableRows.forEach(element => element.addEventListener('dblclick', this.borrowModal.bind(this)));        
     }
 
+    borrowModal(e) {
+        let modalContent = document.querySelector(".modal-content")
+        modalContent.innerHTML = `
+            <p>Would you like to borrow this book?</p>
+            <button id="yes" type="button">Yes</button>
+            <button id="no" type="button">No</button>
+        `
+    }
+
 }
