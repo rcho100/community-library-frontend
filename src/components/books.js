@@ -53,7 +53,13 @@ class Books {
         selectedBook.innerText = `${bookTitle} - ${bookAuthor}`
 
         document.querySelector("#no").addEventListener('click',() => bgModal.style.display = "none")
-        document.querySelector("#yes").addEventListener('click', borrowBook.bind(this))
+        document.querySelector("#yes").addEventListener('click', this.borrowBook.bind(this))
     }
 
+    borrowBook(e) {
+        console.log('this', this)
+        console.log('e', e)
+
+        
+    }
 }
