@@ -28,7 +28,10 @@ class Users {
             }
         }
         this.adapter.signupUser(signupInfo)
-        .then(json => this.users.push(new User(json.user.data.attributes)))
+        .then((json) => {
+            this.token = json.jwt
+            return this.users.push(new User(json.user.data.attributes))
+        })
         .then(() => this.clearAndRender())
     }
 
@@ -44,7 +47,10 @@ class Users {
             }
         }
         this.adapter.loginUser(loginInfo)
-        .then(json => this.users.push(new User(json.user.data.attributes)))
+        .then((json) => {
+            this.token = json.jwt
+            return this.users.push(new User(json.user.data.attributes))
+        })
         .then(() => this.clearAndRender())
         .catch(error => console.log(error))
     }
@@ -82,6 +88,6 @@ class Users {
             </main>
         `
 
-        let displayBooks = new Books()
+        let displayBooks = new Books(this.token)
     }
 }

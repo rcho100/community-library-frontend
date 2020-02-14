@@ -1,6 +1,7 @@
 class Books {
-    constructor() {
+    constructor(token) {
         this.books = []
+        this.token = token
         this.adapter = new BooksAdapter()
         this.initBindingsAndEventListeners()
         this.fetchAndLoadBooks()
@@ -59,6 +60,7 @@ class Books {
 
     borrowBook(bookID) {
         console.log(bookID)
+        console.log(token)
         
     }
 }
