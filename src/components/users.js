@@ -65,10 +65,10 @@ class Users {
                         <li>Profile</li>
                         <li>Signout</li>
                     </ul>
-                <h3>Welcome ${currentUser.name}!</h3>
                 </nav>
             </header>
             <main>
+                <h3>Welcome ${currentUser.name}!</h3>
                 <div class="books-container">
                     <table class="main-table">
                         <thead>
