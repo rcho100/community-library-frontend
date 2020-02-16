@@ -1,3 +1,8 @@
+let selectedTableRow;
+let bookTitle;
+let bookAuthor;
+let bookAvailability;
+
 class Books {
     constructor(token) {
         this.books = []
@@ -36,7 +41,7 @@ class Books {
     }
 
     borrowModal(e) {
-        let selectedTableRow = e.target.parentNode
+        selectedTableRow = e.target.parentNode
         let bookID = selectedTableRow.id
         let modalContent = document.querySelector(".modal-content")
         modalContent.innerHTML = `
@@ -48,11 +53,12 @@ class Books {
         let bgModal = document.querySelector(".bg-modal")
         bgModal.style.display = "flex"
 
-        const bookTitle = selectedTableRow.querySelector(".book-title").innerText
-        const bookAuthor = selectedTableRow.querySelector(".book-author").innerText
+        bookTitle = selectedTableRow.querySelector(".book-title")
+        bookAuthor = selectedTableRow.querySelector(".book-author")
+        bookAvailability = selectedTableRow.querySelector(".book-availability")
 
         const selectedBook = modalContent.querySelector("#selected-book")
-        selectedBook.innerText = `${bookTitle} - ${bookAuthor}`
+        selectedBook.innerText = `${bookTitle.innerText} - ${bookAuthor.innerText}`
 
         document.querySelector("#no").addEventListener('click',() => bgModal.style.display = "none")
         document.querySelector("#yes").addEventListener('click', this.borrowBook(bookID))
