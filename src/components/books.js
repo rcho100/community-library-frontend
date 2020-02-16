@@ -65,8 +65,8 @@ class Books {
     }
 
     borrowBook(bookID) {
-        console.log(bookID)
-        console.log(token)
-        
+        this.adapter.borrow(bookID, this.token)
+        .then(json => bookAvailability.innerText = json.data.attributes.available)
+        .catch(error => console.log(error))
     }
 }
