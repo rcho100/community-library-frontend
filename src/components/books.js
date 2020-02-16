@@ -61,7 +61,7 @@ class Books {
         selectedBook.innerText = `${bookTitle.innerText} - ${bookAuthor.innerText}`
 
         document.querySelector("#no").addEventListener('click',() => bgModal.style.display = "none")
-        document.querySelector("#yes").addEventListener('click', this.borrowBook(bookID))
+        document.querySelector("#yes").addEventListener('click', () => this.borrowBook(bookID))
     }
 
     borrowBook(bookID) {
