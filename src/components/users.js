@@ -69,6 +69,13 @@ class Users {
             </header>
             <main>
                 <h3>Welcome ${currentUser.name}!</h3>
+                <div class="current-book-section">
+                    <p>Book you are currently borrowing:</p>
+                    <ul>
+                        <li class="currently-borrowed">No book borrowed currently</li>
+                    </ul>
+                    <button type="return-button">Return Book</button>
+                </div>
                 <div class="books-container">
                     <table class="main-table">
                         <thead>
