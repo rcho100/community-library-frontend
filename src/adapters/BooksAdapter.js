@@ -8,7 +8,7 @@ class BooksAdapter {
     }
 
     borrow(bookID, token) {
-        return fetch(`http://localhost:3000/books/${bookID}`, {
+        return fetch(`http://localhost:3000/books/${bookID}/borrow`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
