@@ -3,6 +3,7 @@ let bookTitle;
 let bookAuthor;
 let bookAvailability;
 let bgModal;
+let currentBook;
 
 class Books {
     constructor(token) {
@@ -69,6 +70,8 @@ class Books {
         this.adapter.borrow(bookID, this.token)
         .then(json => {
             bookAvailability.innerText = json.data.attributes.available
+            currentBook = document.querySelector(".currently-borrowed")
+            currentBook.innerText = `${json.data.attributes.title} - ${json.data.attributes.author}`
             return bgModal.style.display = "none"
         })
         .catch(error => console.log(error))
