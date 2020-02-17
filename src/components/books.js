@@ -2,6 +2,7 @@ let selectedTableRow;
 let bookTitle;
 let bookAuthor;
 let bookAvailability;
+let bgModal;
 
 class Books {
     constructor(token) {
@@ -50,7 +51,7 @@ class Books {
             <button id="yes" type="button">Yes</button>
             <button id="no" type="button">No</button>
         `
-        let bgModal = document.querySelector(".bg-modal")
+        bgModal = document.querySelector(".bg-modal")
         bgModal.style.display = "flex"
 
         bookTitle = selectedTableRow.querySelector(".book-title")
@@ -66,7 +67,10 @@ class Books {
 
     borrowBook(bookID) {
         this.adapter.borrow(bookID, this.token)
-        .then(json => bookAvailability.innerText = json.data.attributes.available)
+        .then(json => {
+            bookAvailability.innerText = json.data.attributes.available
+            return bgModal.style.display = "none"
+        })
         .catch(error => console.log(error))
     }
 }
