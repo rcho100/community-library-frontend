@@ -17,6 +17,10 @@ class Books {
     initBindingsAndEventListeners() {
         this.booksContainer = document.querySelector(".books-container")
         this.tableBody = document.querySelector(".table-body")
+        this.returnBookBtn = document.querySelector(".return-button")
+
+        this.returnBookBtn.addEventListener('click', returnBook)
+
     }
 
     fetchAndLoadBooks() {
