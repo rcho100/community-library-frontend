@@ -74,7 +74,7 @@ class Users {
                     <ul>
                         <li class="currently-borrowed">No book borrowed currently</li>
                     </ul>
-                    <button type="return-button">Return Book</button>
+                    <button type="submit" class="return-button">Return Book</button>
                 </div>
                 <div class="books-container">
                     <table class="main-table">
