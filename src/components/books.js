@@ -34,7 +34,7 @@ class Books {
             
         const tableData = this.books.map(book => {
             return `
-            <tr id=${book.id}>
+            <tr data-id=${book.id}>
               <td class="book-title">${book.title}</td>
               <td class="book-author">${book.author}</td>
               <td class="book-availability">${book.available}</td>
@@ -48,7 +48,7 @@ class Books {
 
     borrowModal(e) {
         selectedTableRow = e.target.parentNode
-        let bookID = selectedTableRow.id
+        let bookID = selectedTableRow.dataset.id
         let modalContent = document.querySelector(".modal-content")
         modalContent.innerHTML = `
             <p>Would you like to borrow this book?</p>
