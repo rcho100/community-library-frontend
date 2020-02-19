@@ -3,12 +3,12 @@ let bookTitle;
 let bookAuthor;
 let bookAvailability;
 let bgModal;
-let currentBook;
 
 class Books {
-    constructor(token) {
+    constructor(token, currentlyBorrowed) {
         this.books = []
         this.token = token
+        this.currentlyBorrowed = currentlyBorrowed
         this.adapter = new BooksAdapter()
         this.initBindingsAndEventListeners()
         this.fetchAndLoadBooks()
@@ -74,8 +74,8 @@ class Books {
         this.adapter.borrow(bookID, this.token)
         .then(json => {
             bookAvailability.innerText = json.data.attributes.available
-            currentBook = document.querySelector(".currently-borrowed")
-            currentBook.innerText = `${json.data.attributes.title} - ${json.data.attributes.author}`
+            this.currentlyBorrowed = document.querySelector(".currently-borrowed")
+            this.currentlyBorrowed.innerText = `${json.data.attributes.title} - ${json.data.attributes.author}`
             return bgModal.style.display = "none"
         })
         .catch(error => console.log(error))

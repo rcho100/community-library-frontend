@@ -94,7 +94,7 @@ class Users {
                 </div>
             </main>
         `
-
-        let displayBooks = new Books(this.token)
+        let currentlyBorrowed = document.querySelector(".currently-borrowed")
+        let displayBooks = new Books(this.token, currentlyBorrowed.innerText)
     }
 }
