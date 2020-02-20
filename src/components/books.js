@@ -31,7 +31,7 @@ class Books {
 
     render() {
         console.log(this.books)
-            
+
         const tableData = this.books.map(book => {
             return `
             <tr data-id=${book.id}>
@@ -78,6 +78,13 @@ class Books {
             this.currentlyBorrowed.innerText = `${json.data.attributes.title} - ${json.data.attributes.author}`
             return bgModal.style.display = "none"
         })
+        .catch(error => console.log(error))
+    }
+
+    returnBook(e) {
+        e.preventDefault();
+        this.adapter.returning(bookID, this.token)
+        .then(json => console.log('returned', json))
         .catch(error => console.log(error))
     }
 }
