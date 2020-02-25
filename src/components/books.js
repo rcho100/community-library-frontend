@@ -25,12 +25,19 @@ class Books {
 
     fetchAndLoadBooks() {
         this.adapter.getBooks()
-        .then(data => data.data.forEach(book => this.books.push(new Book(book.attributes))))
+        .then(data => {
+            console.log('fetching & loading books', data)
+            console.log(data.included)
+            console.log(data.included[1])
+            // console.log(data.included[1].relationships.books.data[0].id)
+    
+            data.data.forEach(book => this.books.push(new Book(book.attributes)))
+        })
         .then(() => this.render())
     }
 
     render() {
-        console.log(this.books)
+        console.log('all books', this.books)
 
         const tableData = this.books.map(book => {
             return `
@@ -84,7 +91,7 @@ class Books {
     returnBook(e) {
         e.preventDefault();
         this.adapter.returning(bookID, this.token)
-        .then(json => console.log('returned', json))
+        .then(json => console.log('returned book json', json))
         .catch(error => console.log(error))
     }
 }
