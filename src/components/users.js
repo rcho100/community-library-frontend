@@ -49,6 +49,13 @@ class Users {
         this.adapter.loginUser(loginInfo)
         .then((json) => {
             this.token = json.jwt
+            console.log('userinfo', json)
+            console.log('userinfo', json)
+            console.log('userID', json.user.data.id)
+            console.log('userName', json.user.data.attributes.name)
+            console.log('userEmail', json.user.data.attributes.email)
+            console.log("user's book", json.user.data.relationships.books.data[0])
+
             return this.users.push(new User(json.user.data.attributes))
         })
         .then(() => this.clearAndRender())
