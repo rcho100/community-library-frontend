@@ -30,6 +30,15 @@ class Users {
         this.adapter.signupUser(signupInfo)
         .then((json) => {
             this.token = json.jwt
+            if (json.user.included[0]) {
+                console.log('what is this', this)
+                this.currentlyBorrowed = {
+                    title: json.user.included[0].attributes.title,
+                    author: json.user.included[0].attributes.author,
+                    available: json.user.included[0].attributes.available
+                }
+            }
+            
             return this.users.push(new User(json.user.data.attributes))
         })
         .then(() => this.clearAndRender())
@@ -49,12 +58,19 @@ class Users {
         this.adapter.loginUser(loginInfo)
         .then((json) => {
             this.token = json.jwt
-            console.log('userinfo', json)
+            if (json.user.included[0]) {
+                console.log('what is this', this)
+                this.currentlyBorrowed = {
+                    title: json.user.included[0].attributes.title,
+                    author: json.user.included[0].attributes.author,
+                    available: json.user.included[0].attributes.available
+                }
+            }
             console.log('userinfo', json)
             console.log('userID', json.user.data.id)
-            console.log('userName', json.user.data.attributes.name)
-            console.log('userEmail', json.user.data.attributes.email)
-            console.log("user's book", json.user.data.relationships.books.data[0])
+            // console.log('bookTitleBorrowedByUser', json.user.included[0].attributes.title)
+            // console.log('bookAuthorBorrowedByUser', json.user.included[0].attributes.author)
+            // console.log('bookAuthorBorrowedByUser', json.user.included[0].attributes.available)
 
             return this.users.push(new User(json.user.data.attributes))
         })
