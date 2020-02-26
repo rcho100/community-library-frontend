@@ -52,11 +52,13 @@ class Users {
             if (json.user.included[0]) {
                 console.log('what is this', this)
                 this.currentlyBorrowed = {
+                    id: json.user.included[0].id,
                     title: json.user.included[0].attributes.title,
                     author: json.user.included[0].attributes.author,
                     available: json.user.included[0].attributes.available
                 }
             }
+            console.log('currently borrowed', this.currentlyBorrowed)
             console.log('userinfo', json)
             console.log('userID', json.user.data.id)
             // console.log('bookTitleBorrowedByUser', json.user.included[0].attributes.title)
