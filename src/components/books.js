@@ -5,10 +5,10 @@ let bookAvailability;
 let bgModal;
 
 class Books {
-    constructor(token, currentlyBorrowed) {
+    constructor(token, displayCurrentlyBorrowed) {
         this.books = []
         this.token = token
-        this.currentlyBorrowed = currentlyBorrowed
+        this.displayCurrentlyBorrowed = displayCurrentlyBorrowed
         this.adapter = new BooksAdapter()
         this.initBindingsAndEventListeners()
         this.fetchAndLoadBooks()
@@ -81,8 +81,8 @@ class Books {
         this.adapter.borrow(bookID, this.token)
         .then(json => {
             bookAvailability.innerText = json.data.attributes.available
-            this.currentlyBorrowed = document.querySelector(".currently-borrowed")
-            this.currentlyBorrowed.innerText = `${json.data.attributes.title} - ${json.data.attributes.author}`
+            this.displayCurrentlyBorrowed = document.querySelector(".currently-borrowed")
+            this.displayCurrentlyBorrowed.innerText = `${json.data.attributes.title} - ${json.data.attributes.author}`
             return bgModal.style.display = "none"
         })
         .catch(error => console.log(error))
