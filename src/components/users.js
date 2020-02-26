@@ -112,9 +112,7 @@ class Users {
         `
         let displayCurrentlyBorrowed = document.querySelector(".currently-borrowed")
         if (this.currentlyBorrowed) {
-            if (!this.currentlyBorrowed.available) {
-                displayCurrentlyBorrowed.innerText = `${this.currentlyBorrowed.title} - ${this.currentlyBorrowed.author}`
-            }
+            displayCurrentlyBorrowed.innerText = `${this.currentlyBorrowed.title} - ${this.currentlyBorrowed.author}`
         }
         let displayBooks = new Books(this.token, displayCurrentlyBorrowed)
     }
