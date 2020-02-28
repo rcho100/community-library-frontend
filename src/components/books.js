@@ -19,7 +19,7 @@ class Books {
         this.tableBody = document.querySelector(".table-body")
         this.returnBookBtn = document.querySelector(".return-button")
 
-        this.returnBookBtn.addEventListener('click', this.returnBook)
+        this.returnBookBtn.addEventListener('click', this.returnBook.bind(this))
 
     }
 
