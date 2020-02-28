@@ -92,8 +92,14 @@ class Books {
 
     returnBook(e) {
         e.preventDefault();
-        this.adapter.returning(bookID, this.token)
-        .then(json => console.log('returned book json', json))
-        .catch(error => console.log(error))
+        if (this.displayCurrentlyBorrowed.dataset.borrowedId) {
+            let bookID = this.displayCurrentlyBorrowed.dataset.borrowedId
+            console.log('this inside returnBook if', this)
+            this.adapter.returning(bookID, this.token)
+            .then(json => console.log('returned book json', json))
+            .catch(error => console.log(error))
+        } else {
+            this.displayCurrentlyBorrowed.innerText = "You do not have a book to return. No book borrowed currently."
+        }
     }
 }
