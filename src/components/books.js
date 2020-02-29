@@ -101,6 +101,9 @@ class Books {
                 // get table row by data-id and update book availability displayed in book list
                 selectedTableRow = document.querySelectorAll(`[data-id='${json.data.attributes.id}']`)[0]
                 selectedTableRow.querySelector(".book-availability").textContent = `${json.data.attributes.available}`
+                
+                //update book borrowed section to no book borrowed currently and also get rid of data-borrowed-id
+                this.displayCurrentlyBorrowed.parentElement.innerHTML = "<li class='currently-borrowed'>No book borrowed currently</li>"
             })
             .catch(error => console.log(error))
         } else {
