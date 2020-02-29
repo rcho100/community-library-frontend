@@ -96,7 +96,12 @@ class Books {
             let bookID = this.displayCurrentlyBorrowed.dataset.borrowedId
             console.log('this inside returnBook if', this)
             this.adapter.returning(bookID, this.token)
-            .then(json => console.log('returned book json', json))
+            .then(json => {
+                console.log('returned book json', json)
+                // get table row by data-id and update book availability displayed in book list
+                selectedTableRow = document.querySelectorAll(`[data-id='${json.data.attributes.id}']`)[0]
+                selectedTableRow.querySelector(".book-availability").textContent = `${json.data.attributes.available}`
+            })
             .catch(error => console.log(error))
         } else {
             this.displayCurrentlyBorrowed.innerText = "You do not have a book to return. No book borrowed currently."
