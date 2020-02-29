@@ -82,7 +82,7 @@ class Books {
         .then(json => {
             bookAvailability.innerText = json.data.attributes.available
             this.displayCurrentlyBorrowed = document.querySelector(".currently-borrowed")
-            this.displayCurrentlyBorrowed.setAttribute('data-borrowed-ID', `${this.currentlyBorrowed.id}`)
+            this.displayCurrentlyBorrowed.setAttribute('data-borrowed-ID', `${json.data.attributes.id}`)
 
             this.displayCurrentlyBorrowed.innerText = `${json.data.attributes.title} - ${json.data.attributes.author}`
             return bgModal.style.display = "none"
