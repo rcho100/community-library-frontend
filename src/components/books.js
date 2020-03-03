@@ -54,27 +54,31 @@ class Books {
     }
 
     borrowModal(e) {
-        selectedTableRow = e.target.parentNode
-        let bookID = selectedTableRow.dataset.id
-        let modalContent = document.querySelector(".modal-content")
-        modalContent.innerHTML = `
-            <p>Would you like to borrow this book?</p>
-            <p id="selected-book"></p>
-            <button id="yes" type="button">Yes</button>
-            <button id="no" type="button">No</button>
-        `
-        bgModal = document.querySelector(".bg-modal")
-        bgModal.style.display = "flex"
+        if (this.displayCurrentlyBorrowed.dataset.borrowedId !== "0") {
+            alert("You can only borrow one book at a time. Please first return currently borrowed book to borrow another book.")   
+        } else {
+            selectedTableRow = e.target.parentNode
+            let bookID = selectedTableRow.dataset.id
+            let modalContent = document.querySelector(".modal-content")
+            modalContent.innerHTML = `
+                <p>Would you like to borrow this book?</p>
+                <p id="selected-book"></p>
+                <button id="yes" type="button">Yes</button>
+                <button id="no" type="button">No</button>
+            `
+            bgModal = document.querySelector(".bg-modal")
+            bgModal.style.display = "flex"
 
-        bookTitle = selectedTableRow.querySelector(".book-title")
-        bookAuthor = selectedTableRow.querySelector(".book-author")
-        bookAvailability = selectedTableRow.querySelector(".book-availability")
+            bookTitle = selectedTableRow.querySelector(".book-title")
+            bookAuthor = selectedTableRow.querySelector(".book-author")
+            bookAvailability = selectedTableRow.querySelector(".book-availability")
 
-        const selectedBook = modalContent.querySelector("#selected-book")
-        selectedBook.innerText = `${bookTitle.innerText} - ${bookAuthor.innerText}`
+            const selectedBook = modalContent.querySelector("#selected-book")
+            selectedBook.innerText = `${bookTitle.innerText} - ${bookAuthor.innerText}`
 
-        document.querySelector("#no").addEventListener('click',() => bgModal.style.display = "none")
-        document.querySelector("#yes").addEventListener('click', () => this.borrowBook(bookID))
+            document.querySelector("#no").addEventListener('click',() => bgModal.style.display = "none")
+            document.querySelector("#yes").addEventListener('click', () => this.borrowBook(bookID))
+        }
     }
 
     borrowBook(bookID) {
