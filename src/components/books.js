@@ -92,7 +92,10 @@ class Books {
 
     returnBook(e) {
         e.preventDefault();
-        if (this.displayCurrentlyBorrowed.dataset.borrowedId) {
+        if (this.displayCurrentlyBorrowed.dataset.borrowedId === "0") {
+            this.displayCurrentlyBorrowed.innerText = "You do not have a book to return. No book borrowed currently."
+            alert("You do not have a book to return at this time.")   
+        } else {
             let bookID = this.displayCurrentlyBorrowed.dataset.borrowedId
             console.log('this inside returnBook if', this)
             this.adapter.returning(bookID, this.token)
@@ -101,13 +104,11 @@ class Books {
                 // get table row by data-id and update book availability displayed in book list
                 selectedTableRow = document.querySelectorAll(`[data-id='${json.data.attributes.id}']`)[0]
                 selectedTableRow.querySelector(".book-availability").textContent = `${json.data.attributes.available}`
-                
+
                 //update book borrowed section to no book borrowed currently and also get rid of data-borrowed-id
                 this.displayCurrentlyBorrowed.parentElement.innerHTML = "<li class='currently-borrowed'>No book borrowed currently</li>"
             })
             .catch(error => console.log(error))
-        } else {
-            this.displayCurrentlyBorrowed.innerText = "You do not have a book to return. No book borrowed currently."
         }
     }
 }
