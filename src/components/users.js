@@ -78,7 +78,6 @@ class Users {
                 <nav>
                     <ul>
                         <li>Community Library</li>
-                        <li>Profile</li>
                         <li>Signout</li>
                     </ul>
                 </nav>
