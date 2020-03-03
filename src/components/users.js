@@ -88,7 +88,7 @@ class Users {
                 <div class="current-book-section">
                     <p>Book you are currently borrowing:</p>
                     <ul>
-                        <li class="currently-borrowed">No book borrowed currently</li>
+                        <li class="currently-borrowed" data-borrowed-id="0">No book borrowed currently</li>
                     </ul>
                     <button type="submit" class="return-button">Return Book</button>
                 </div>
@@ -112,7 +112,7 @@ class Users {
         `
         let displayCurrentlyBorrowed = document.querySelector(".currently-borrowed")
         if (this.currentlyBorrowed) {
-            displayCurrentlyBorrowed.setAttribute('data-borrowed-ID', `${this.currentlyBorrowed.id}`)
+            displayCurrentlyBorrowed.setAttribute('data-borrowed-id', `${this.currentlyBorrowed.id}`)
             displayCurrentlyBorrowed.innerText = `${this.currentlyBorrowed.title} - ${this.currentlyBorrowed.author}`
         }
         let displayBooks = new Books(this.token, displayCurrentlyBorrowed)
