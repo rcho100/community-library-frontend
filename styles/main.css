@@ -73,6 +73,11 @@ header {
     align-items: flex-start;
 }
 
+.signout {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 .bg-modal {
     width: 100%;
     height: 100%;
