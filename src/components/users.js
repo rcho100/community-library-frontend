@@ -75,12 +75,8 @@ class Users {
         let currentUser = this.users.slice(-1)[0]
         this.container.innerHTML = `
             <header>
-                <nav>
-                    <ul>
-                        <li>Community Library</li>
-                        <li class="signout">Signout</li>
-                    </ul>
-                </nav>
+                <h1>Community Library</h1>
+                <h3 class="signout">Signout</h3>
             </header>
             <main>
                 <h3>Welcome ${currentUser.name}!</h3>
@@ -104,8 +100,9 @@ class Users {
                 </div>
             </main>
         `
-        this.container.style.backgroundColor = "blue"
-        this.container.style.justifyContent = "flex-start"
+        this.container.style.backgroundColor = "white"
+        this.container.style.alignItems = "flex-start"
+        this.container.style.padding = "5%"
         let displayCurrentlyBorrowed = document.querySelector(".currently-borrowed")
         if (this.currentlyBorrowed) {
             displayCurrentlyBorrowed.setAttribute('data-borrowed-id', `${this.currentlyBorrowed.id}`)
