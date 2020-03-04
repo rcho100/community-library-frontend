@@ -78,7 +78,7 @@ class Users {
                 <nav>
                     <ul>
                         <li>Community Library</li>
-                        <li>Signout</li>
+                        <li class="signout">Signout</li>
                     </ul>
                 </nav>
             </header>
