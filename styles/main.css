@@ -2,6 +2,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-size: cover;
     background-position: center;
+    background-image: url('../images/library_background.jpg');
 }
 
 .container {
