@@ -30,6 +30,15 @@ li {
     list-style: none;
 }
 
+.current-and-all-books {
+    display: flex;
+    justify-content: space-around;
+}
+
+.current-book-section {
+    text-align: left;
+}
+
 .entry-forms {
     width: 400px;
     padding: 20px;
