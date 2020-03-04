@@ -24,10 +24,6 @@ body {
     align-items: center;
 }
 
-ul {
-    display: flex;
-}
-
 li {
     list-style: none;
 }
