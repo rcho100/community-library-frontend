@@ -104,6 +104,7 @@ class Users {
                 </div>
             </main>
         `
+        this.container.style.backgroundColor = "blue"
         let displayCurrentlyBorrowed = document.querySelector(".currently-borrowed")
         if (this.currentlyBorrowed) {
             displayCurrentlyBorrowed.setAttribute('data-borrowed-id', `${this.currentlyBorrowed.id}`)
