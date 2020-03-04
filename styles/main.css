@@ -73,6 +73,7 @@ nav {
     height: 100%;
     align-self: stretch;
     background-color: brown;
+    color: white;
 }
 
 nav ul {
@@ -82,7 +83,6 @@ nav ul {
 }
 
 nav li {
-    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
