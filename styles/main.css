@@ -30,9 +30,9 @@ li {
 .entry-forms {
     width: 400px;
     padding: 20px;
-    margin: 8% auto 0;
+    margin: auto;
     text-align: center;
-    background-color: rgb(9, 175, 181);
+    background: linear-gradient(45deg, #e664a1, #e66465);
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
 }
 
