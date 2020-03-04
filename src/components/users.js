@@ -102,11 +102,6 @@ class Users {
                         </tbody>
                     </table>
                 </div>
-                <div class="bg-modal">
-                    <div class="modal-content">
-
-                    </div>
-                </div>
             </main>
         `
         let displayCurrentlyBorrowed = document.querySelector(".currently-borrowed")
