@@ -105,6 +105,7 @@ class Users {
             </main>
         `
         this.container.style.backgroundColor = "blue"
+        this.container.style.justifyContent = "flex-start"
         let displayCurrentlyBorrowed = document.querySelector(".currently-borrowed")
         if (this.currentlyBorrowed) {
             displayCurrentlyBorrowed.setAttribute('data-borrowed-id', `${this.currentlyBorrowed.id}`)
