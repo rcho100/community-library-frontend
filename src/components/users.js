@@ -80,28 +80,32 @@ class Users {
             </header>
             <main>
                 <h3>Welcome ${currentUser.name}!</h3>
-                <div class="current-book-section">
-                    <p>Book you are currently borrowing:</p>
-                    <ul>
-                        <li class="currently-borrowed" data-borrowed-id="0">No book borrowed currently</li>
-                    </ul>
-                    <button type="submit" class="return-button">Return Book</button>
-                </div>
-                <div class="books-container">
-                    <table class="main-table">
-                        <thead>
-                            <th>Title</th>
-                            <th>Book</th>
-                            <th>Available</th>
-                        </thead>
-                        <tbody class="table-body">
-                        </tbody>
-                    </table>
+                <p>Please double click to borrow a book from the list. If you are already borrowing a book, please return the book before borrowing another book.</p>
+                <div class="current-and-all-books">
+                    <div class="current-book-section">
+                        <p>Book you are currently borrowing:</p>
+                        <ul>
+                            <li class="currently-borrowed" data-borrowed-id="0">No book borrowed currently</li>
+                        </ul>
+                        <button type="submit" class="return-button">Return Book</button>
+                    </div>
+                    <div class="books-container">
+                        <table class="main-table">
+                            <thead>
+                                <th>Title</th>
+                                <th>Book</th>
+                                <th>Available</th>
+                            </thead>
+                            <tbody class="table-body">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </main>
         `
         this.container.style.backgroundColor = "white"
         this.container.style.alignItems = "flex-start"
+        this.container.style.alignContent = "flex-start"
         this.container.style.padding = "5%"
         let displayCurrentlyBorrowed = document.querySelector(".currently-borrowed")
         if (this.currentlyBorrowed) {
