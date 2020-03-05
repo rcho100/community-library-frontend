@@ -12,6 +12,14 @@ class Users {
 
         this.signupForm.addEventListener('submit', this.createUser.bind(this));
         this.loginForm.addEventListener('submit', this.retrieveUser.bind(this));
+        
+        //using event delegation
+        this.container.onclick = (event) => {
+            let signoutBtn = event.target.closest(".signout");
+            if(!signoutBtn) return;
+            if(!this.container.contains(signoutBtn)) return;
+            location.reload();
+        }
     }
 
     createUser(e) {
