@@ -56,6 +56,8 @@ class Books {
     borrowModal(e) {
         if (this.displayCurrentlyBorrowed.dataset.borrowedId !== "0") {
             alert("You can only borrow one book at a time. Please first return currently borrowed book to borrow another book.")   
+        } else if (e.currentTarget.cells[2].innerText === "false") {
+            alert("Sorry, this book is currently unavailable.")
         } else {
             selectedTableRow = e.target.parentNode
             let bookID = selectedTableRow.dataset.id
