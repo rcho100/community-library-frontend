@@ -101,7 +101,7 @@ class Users {
                         <table class="main-table">
                             <thead>
                                 <th>Title</th>
-                                <th>Book</th>
+                                <th>Author</th>
                                 <th>Available</th>
                             </thead>
                             <tbody class="table-body">
