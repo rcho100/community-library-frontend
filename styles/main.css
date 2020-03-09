@@ -88,6 +88,11 @@ header {
     flex-direction: row-reverse;
 }
 
+table {
+    border-collapse: separate;
+    border-spacing: 0.5em 0.5em;
+}
+
 .bg-modal {
     width: 100%;
     height: 100%;
