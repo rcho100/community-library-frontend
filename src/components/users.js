@@ -56,24 +56,29 @@ class Users {
         }
         this.adapter.loginUser(loginInfo)
         .then((json) => {
-            this.token = json.jwt
-            if (json.user.included[0]) {
-                console.log('what is this', this)
-                this.currentlyBorrowed = {
-                    id: json.user.included[0].id,
-                    title: json.user.included[0].attributes.title,
-                    author: json.user.included[0].attributes.author,
-                    available: json.user.included[0].attributes.available
+            if (json.message) {
+                let errorMsg = document.body.querySelector("#login-error")
+                errorMsg.innerText = json.message
+            } else {
+                this.token = json.jwt
+                if (json.user.included[0]) {
+                    console.log('what is this', this)
+                    this.currentlyBorrowed = {
+                        id: json.user.included[0].id,
+                        title: json.user.included[0].attributes.title,
+                        author: json.user.included[0].attributes.author,
+                        available: json.user.included[0].attributes.available
+                    }
                 }
-            }
-            console.log('currently borrowed', this.currentlyBorrowed)
-            console.log('userinfo', json)
-            console.log('userID', json.user.data.id)
-            // console.log('bookTitleBorrowedByUser', json.user.included[0].attributes.title)
-            // console.log('bookAuthorBorrowedByUser', json.user.included[0].attributes.author)
-            // console.log('bookAuthorBorrowedByUser', json.user.included[0].attributes.available)
+                console.log('currently borrowed', this.currentlyBorrowed)
+                console.log('userinfo', json)
+                console.log('userID', json.user.data.id)
+                // console.log('bookTitleBorrowedByUser', json.user.included[0].attributes.title)
+                // console.log('bookAuthorBorrowedByUser', json.user.included[0].attributes.author)
+                // console.log('bookAuthorBorrowedByUser', json.user.included[0].attributes.available)
 
-            return this.users.push(new User(json.user.data.attributes))
+                return this.users.push(new User(json.user.data.attributes))
+            }
         })
         .then(() => this.clearAndRender())
         .catch(error => console.log(error))
