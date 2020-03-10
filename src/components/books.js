@@ -54,7 +54,7 @@ class Books {
     }
 
     borrowModal(e) {
-        if (this.displayCurrentlyBorrowed.dataset.borrowedId !== "0") {
+        if (this.displayCurrentlyBorrowed.innerText !== "No book borrowed currently") {
             alert("You can only borrow one book at a time. Please first return currently borrowed book to borrow another book.")   
         } else if (e.currentTarget.cells[2].innerText === "false") {
             alert("Sorry, this book is currently unavailable.")
@@ -98,8 +98,7 @@ class Books {
 
     returnBook(e) {
         e.preventDefault();
-        if (this.displayCurrentlyBorrowed.dataset.borrowedId === "0") {
-            this.displayCurrentlyBorrowed.innerText = "You do not have a book to return. No book borrowed currently."
+        if (this.displayCurrentlyBorrowed.innerText === "No book borrowed currently") {
             alert("You do not have a book to return at this time.")   
         } else {
             let bookID = this.displayCurrentlyBorrowed.dataset.borrowedId
@@ -112,7 +111,8 @@ class Books {
                 selectedTableRow.querySelector(".book-availability").textContent = `${json.data.attributes.available}`
 
                 //update book borrowed section to 'No book borrowed currently' and change data-borrowed-id to '0'
-                this.displayCurrentlyBorrowed.parentElement.innerHTML = "<li class='currently-borrowed' data-borrowed-id=`0`>No book borrowed currently</li>"
+                this.displayCurrentlyBorrowed.innerText = "No book borrowed currently"
+                this.displayCurrentlyBorrowed.dataset.borrowedId = "0"
             })
             .catch(error => console.log(error))
         }
