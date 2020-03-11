@@ -64,9 +64,9 @@ class Users {
         }
         this.adapter.loginUser(loginInfo)
         .then((json) => {
-            if (json.message) {
+            if (json.error) {
                 let errorMsg = document.body.querySelector("#login-error")
-                errorMsg.innerText = json.message
+                errorMsg.innerText = json.error
             } else {
                 this.token = json.jwt
                 if (json.user.included[0]) {
