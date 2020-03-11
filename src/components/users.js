@@ -37,8 +37,16 @@ class Users {
         }
         this.adapter.signupUser(signupInfo)
         .then((json) => {
-            this.token = json.jwt
-            return this.users.push(new User(json.user.data.attributes))
+            if (json.error) {
+                let errorMsg = document.body.querySelector("#signup-error")
+                e.target.name.value = ''
+                e.target.email.value = ''
+                e.target.password.value = ''
+                errorMsg.innerText = json.error
+            } else {
+                this.token = json.jwt
+                return this.users.push(new User(json.user.data.attributes))
+            }
         })
         .then(() => this.clearAndRender())
     }
