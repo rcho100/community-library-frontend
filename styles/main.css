@@ -72,6 +72,10 @@ li {
     margin: auto;
 }
 
+#signup-error, #login-error {
+    color: red;
+}
+
 header {
     display: flex;
     width: 100%;
