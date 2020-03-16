@@ -105,7 +105,7 @@ table {
     border-spacing: 0.5em 0.5em;
 }
 
-tr:hover {
+tbody > tr:hover {
     color: orange;
     cursor: pointer;
 }
