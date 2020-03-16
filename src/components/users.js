@@ -111,6 +111,7 @@ class Users {
                         <button type="submit" class="return-button">Return Book</button>
                     </div>
                     <div class="books-container">
+                        <button id="sort-btn">Sort by Author Name</button>
                         <table class="main-table">
                             <thead>
                                 <th>Title</th>
@@ -124,6 +125,7 @@ class Users {
                 </div>
             </main>
         `
+        
         this.container.style.backgroundColor = "white"
         this.container.style.alignItems = "flex-start"
         this.container.style.alignContent = "flex-start"
@@ -134,5 +136,18 @@ class Users {
             displayCurrentlyBorrowed.innerText = `${this.currentlyBorrowed.title} - ${this.currentlyBorrowed.author}`
         }
         let displayBooks = new Books(this.token, displayCurrentlyBorrowed)
+        let sortBtn = document.querySelector("#sort-btn")
+        sortBtn.addEventListener('click', (e) => {
+            displayBooks.books.sort((a, b) => {
+                if (a.author < b.author) {
+                    return -1;
+                }
+                if (a.author > b.author) {
+                    return 1;
+                }
+                return 0;
+            })
+            displayBooks.render()
+        })
     }
 }
