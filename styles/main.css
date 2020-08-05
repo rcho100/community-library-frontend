@@ -3,6 +3,7 @@
 }
 
 body {
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,8 +18,8 @@ body {
 }
 
 .container {
-    width: 91vw;
-    height: 91vh;
+    width: 95vw;
+    height: 95vh;
     overflow: auto;
 }
 
