@@ -45,11 +45,15 @@ li {
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
 }
 
+.entry-forms p {
+    margin: 15px auto 5px;
+}
+
 .login-form {
     border-radius: 5px;
     width: 300px;
     padding: 20px;
-    margin: 8% auto 0;
+    margin: 0 auto;
     text-align: center;
     background-color: white;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
@@ -59,7 +63,7 @@ li {
     border-radius: 5px;
     width: 300px;
     padding: 20px;
-    margin: 8% auto 0;
+    margin: 0 auto;
     text-align: center;
     background-color: white;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
