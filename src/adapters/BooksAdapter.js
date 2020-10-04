@@ -1,6 +1,6 @@
 class BooksAdapter {
     constructor() {
-        this.baseURL = "http://localhost:3000/books"
+        this.baseURL = "https://community-library-api.herokuapp.com/books"
     }
 
     getBooks() {

@@ -1,7 +1,7 @@
 class UsersAdapter {
     constructor() {
-        this.signupURL = "http://localhost:3000/signup"
-        this.loginURL = "http://localhost:3000/login"
+        this.signupURL = "https://community-library-api.herokuapp.com/signup"
+        this.loginURL = "https://community-library-api.herokuapp.com/login"
     }
 
     signupUser(signupInfo) {
