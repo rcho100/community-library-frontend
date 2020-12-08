@@ -39,18 +39,24 @@ class Books {
     render() {
         console.log('all books', this.books)
 
-        const tableData = this.books.map(book => {
+        this.booksContainer.innerHTML = this.books.map(book => {
             return `
-            <tr data-id=${book.id}>
-              <td class="book-title">${book.title}</td>
-              <td class="book-author">${book.author}</td>
-              <td class="book-availability">${book.available}</td>
-            </tr>`
+                <div class="library-book">
+                    <div class="book-drawing">
+                        <div class="book-drawing-cover">${book.title}</div>
+                        <div class="book-drawing-spine"></div>
+                        <div class="book-drawing-footer"></div>
+                    </div>
+                    <div class="additional-book-info">
+                        <p>${book.author}</p>
+                        <p>${book.available ? "Available" : "Currently Out"}</p>
+                    </div>
+                </div>
+            `
         }).join('')
 
-        this.tableBody.innerHTML = tableData
-        let tableRows = document.querySelectorAll("tbody > tr")
-        tableRows.forEach(element => element.addEventListener('dblclick', this.borrowModal.bind(this)));        
+        const libraryBooks = document.querySelectorAll("library-book")
+        libraryBooks.forEach(libraryBook => libraryBook.addEventListener('dblclick', this.borrowModal.bind(this)));   
     }
 
     borrowModal(e) {

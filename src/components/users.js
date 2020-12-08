@@ -106,24 +106,12 @@ class Users {
                         <button type="submit" class="return-button">Return Book</button>
                     </div>
                     <div class="books-container">
-                        <button id="sort-btn">Sort by Author Name</button>
-                        <table class="main-table">
-                            <thead>
-                                <th>Title</th>
-                                <th>Author</th>
-                                <th>Available</th>
-                            </thead>
-                            <tbody class="table-body">
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </main>
         `
         this.main = document.getElementsByTagName("main")[0]
-
         this.container.style.fontSize = "1.5rem"
-        this.main.style.padding = "5%"
         let displayCurrentlyBorrowed = document.querySelector(".currently-borrowed")
         if (this.currentlyBorrowed) {
             displayCurrentlyBorrowed.setAttribute('data-borrowed-id', `${this.currentlyBorrowed.id}`)
