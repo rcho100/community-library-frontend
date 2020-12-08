@@ -69,7 +69,7 @@ class Books {
                 <button id="no" type="button">No</button>
             `
             bgModal = document.querySelector(".bg-modal")
-            bgModal.style.display = "flex"
+            bgModal.style.display = "block"
 
             bookTitle = selectedTableRow.querySelector(".book-title")
             bookAuthor = selectedTableRow.querySelector(".book-author")

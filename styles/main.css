@@ -23,6 +23,10 @@ body {
     border-radius: 2rem;
 }
 
+p {
+    font-size: 1.5rem;
+}
+
 .welcome {
     font-size: 1.5rem;
     margin: auto;
@@ -37,8 +41,25 @@ li {
     justify-content: space-around;
 }
 
+.current-and-all-books h3 {
+    margin: 1rem 0;
+}
+
+.current-and-all-books p {
+    margin: 1rem 0;
+}
+
+.current-and-all-books ul {
+    margin: 1rem 0;
+}
+
 .current-book-section {
     text-align: left;
+    width: 45%;
+}
+
+.books-container {
+    width: 45%;
 }
 
 .entry-forms {
@@ -85,7 +106,7 @@ li {
     padding: 1rem;
 }
 
-button {
+.entry-forms button {
     cursor: pointer;
     background-color: #3498db;
     border: .2rem solid #3498db;
@@ -108,7 +129,24 @@ header {
     align-items: flex-start;
 }
 
-.return-button:hover {
+.current-and-all-books button {
+    padding: 1rem;
+    background-color: #3498db;
+    border: .2rem solid #3498db;
+    border-radius: .4rem;
+    margin: 1rem .4rem;
+}
+
+.modal-content button {
+    padding: 1rem;
+    width: 6rem;
+    background-color: #3498db;
+    border: .2rem solid #3498db;
+    border-radius: .4rem;
+    margin: 1rem .4rem;
+}
+
+.current-and-all-books button:hover {
     cursor: pointer;
     background-color: purple;
     color: white;
@@ -121,7 +159,7 @@ header {
 
 .signout:hover {
     cursor: pointer;
-    border-bottom: 3rem black solid;
+    border-bottom: .3rem black solid;
     color: purple;
 }
 
@@ -138,18 +176,22 @@ tbody > tr:hover {
 .bg-modal {
     width: 100%;
     height: 100%;
+    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
     justify-content: center;
     align-items: center;
     display: none;
 }
 
 .modal-content {
-    width: 500rem;
-    height: 300rem;
+    margin: auto;
+    width: 75%;
     background-color: white;
     text-align: center;
-    border-radius: 4rem;
-    padding: 5rem;
+    border-radius: 2rem;
+    padding: 3rem;
 }
