@@ -24,7 +24,6 @@ class Users {
 
     createUser(e) {
         e.preventDefault();
-        console.log('User is being created')
         let userName = e.target.name.value
         let userEmail = e.target.email.value
         let userPassword = e.target.password.value
@@ -70,7 +69,6 @@ class Users {
             } else {
                 this.token = json.jwt
                 if (json.user.included[0]) {
-                    console.log('what is this', this)
                     this.currentlyBorrowed = {
                         id: json.user.included[0].id,
                         title: json.user.included[0].attributes.title,
@@ -78,18 +76,10 @@ class Users {
                         available: json.user.included[0].attributes.available
                     }
                 }
-                console.log('currently borrowed', this.currentlyBorrowed)
-                console.log('userinfo', json)
-                console.log('userID', json.user.data.id)
-                // console.log('bookTitleBorrowedByUser', json.user.included[0].attributes.title)
-                // console.log('bookAuthorBorrowedByUser', json.user.included[0].attributes.author)
-                // console.log('bookAuthorBorrowedByUser', json.user.included[0].attributes.available)
-
-                return this.users.push(new User(json.user.data.attributes))
+                this.users.push(new User(json.user.data.attributes))
+                this.clearAndRender()
             }
         })
-        .then(() => this.clearAndRender())
-        .catch(error => console.log(error))
     }
 
     clearAndRender() {
