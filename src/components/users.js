@@ -94,17 +94,22 @@ class Users {
 
     clearAndRender() {
         let currentUser = this.users.slice(-1)[0]
+        this.container.style.width = "95%"
         this.container.innerHTML = `
             <header>
                 <h1>Community Library</h1>
                 <h3 class="signout">Signout</h3>
             </header>
             <main>
-                <h3>Welcome ${currentUser.name}!</h3>
-                <p>Please double click to borrow a book from the list. If you are already borrowing a book, please return the book before borrowing another book.</p>
                 <div class="current-and-all-books">
                     <div class="current-book-section">
-                        <p>Book you are currently borrowing:</p>
+                        <h3>Welcome ${currentUser.name}!</h3>
+                        <p>
+                            Please double click to borrow a book from the list. If you are already borrowing a book, please return the book before borrowing another book.
+                        </p>    
+                        <p>
+                            Book you are currently borrowing:
+                        </p>
                         <ul>
                             <li class="currently-borrowed" data-borrowed-id="0">No book borrowed currently</li>
                         </ul>
@@ -125,11 +130,10 @@ class Users {
                 </div>
             </main>
         `
-        
-        this.container.style.backgroundColor = "white"
-        this.container.style.alignItems = "flex-start"
-        this.container.style.alignContent = "flex-start"
-        this.container.style.padding = "5%"
+        this.main = document.getElementsByTagName("main")[0]
+
+        this.container.style.fontSize = "1.5rem"
+        this.main.style.padding = "5%"
         let displayCurrentlyBorrowed = document.querySelector(".currently-borrowed")
         if (this.currentlyBorrowed) {
             displayCurrentlyBorrowed.setAttribute('data-borrowed-id', `${this.currentlyBorrowed.id}`)
