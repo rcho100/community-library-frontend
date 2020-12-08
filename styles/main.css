@@ -1,112 +1,105 @@
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    font-size: 62.5%;
+}
+
 body {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
-    background-image: url('../images/library_background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-color: #013220;
+}
+
+p {
+    font-size: 1.5rem;
 }
 
 .container {
-    width: 95vw;
-    height: 95vh;
-    overflow: auto;
+    text-align: center;
+    width: 50rem;
+    margin: 3rem auto;
+    padding: 5rem 7rem;
+    background: linear-gradient(45deg, #e664a1, #e66465);
+    box-shadow: 0 0 3rem 0 rgba(0, 0, 0, 0.3);
+    border-radius: 2rem;
 }
 
-li {
-    list-style: none;
-}
-
-.current-and-all-books {
-    display: flex;
-    justify-content: space-around;
-}
-
-.current-book-section {
-    text-align: left;
+/* Initial page with forms */
+.welcome {
+    font-size: 1.5rem;
+    margin: auto;
 }
 
 .entry-forms {
-    border-radius: 5px;
-    width: 400px;
-    padding: 20px;
     margin: auto;
-    text-align: center;
-    background: linear-gradient(45deg, #e664a1, #e66465);
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
-}
-
-.entry-forms p {
-    margin: 15px auto 5px;
+    font-size: 1.5rem;
 }
 
 .login-form {
-    border-radius: 5px;
-    width: 300px;
-    padding: 20px;
-    margin: 0 auto;
+    border-radius: 2rem;
+    margin: auto;
+    width: 90%;
+    padding: 5rem;
     text-align: center;
     background-color: white;
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.3);
+    margin-top: 1.5rem;
+}
+
+.login-form h3 {
+    margin-bottom: 1rem;
 }
 
 .signup-form {
-    border-radius: 5px;
-    width: 300px;
-    padding: 20px;
-    margin: 0 auto;
+    border-radius: 2rem;
+    margin: auto;
+    width: 90%;
+    padding: 5rem;
     text-align: center;
     background-color: white;
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.3);
+    margin-top: 1.5rem;
+}
+
+.signup-form h3 {
+    margin-top: .5rem;
+    margin-bottom: 1rem;
 }
 
 .entry-forms input {
-    border-radius: 4px;
-    border: 2px solid #f0f0f0;
+    border-radius: 1rem;
+    border: .2rem solid #f0f0f0;
     display: block;
-    margin: auto;
     width: 100%;
-    padding: 10px;
+    padding: 1rem;
 }
 
-button {
+.entry-forms button {
     cursor: pointer;
     background-color: #3498db;
-    border: 2px solid #3498db;
-    border-radius: 4px;
+    border: .2rem solid #3498db;
+    border-radius: .4rem;
     color: #fff;
     display: block;
-    font-size: 16px;
-    padding: 10px;
-    margin: 15px auto 0;
-    width: 50%;
+    padding: 1rem;
+    width: 35%;
+    margin-top: .5rem;
 }
 
 #signup-error, #login-error {
     color: red;
 }
 
+/* Page after signing in */
+
 header {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: flex-start;
-}
-
-.return-button:hover {
-    cursor: pointer;
-    background-color: purple;
-    color: white;
 }
 
 .signout {
@@ -116,8 +109,52 @@ header {
 
 .signout:hover {
     cursor: pointer;
-    border-bottom: 3px black solid;
+    border-bottom: .3rem black solid;
     color: purple;
+}
+
+.current-and-all-books {
+    display: flex;
+    justify-content: space-around;
+}
+
+.current-and-all-books h3 {
+    margin: 1rem 0;
+}
+
+.current-and-all-books p {
+    margin: 1rem 0;
+}
+
+.current-and-all-books ul {
+    margin: 1rem 0;
+}
+
+.current-book-section {
+    text-align: left;
+    width: 45%;
+}
+
+li {
+    list-style: none;
+}
+
+.current-and-all-books button {
+    padding: 1rem;
+    background-color: #3498db;
+    border: .2rem solid #3498db;
+    border-radius: .4rem;
+    margin: 1rem .4rem;
+}
+
+.current-and-all-books button:hover {
+    cursor: pointer;
+    background-color: purple;
+    color: white;
+}
+
+.books-container {
+    width: 45%;
 }
 
 table {
@@ -130,21 +167,35 @@ tbody > tr:hover {
     cursor: pointer;
 }
 
+/* Modal */
 .bg-modal {
     width: 100%;
     height: 100%;
+    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
     justify-content: center;
     align-items: center;
     display: none;
 }
 
 .modal-content {
-    width: 500px;
-    height: 300px;
+    margin: auto;
+    width: 75%;
     background-color: white;
     text-align: center;
-    border-radius: 4px;
-    padding: 20px;
+    border-radius: 2rem;
+    padding: 3rem;
+}
+
+.modal-content button {
+    padding: 1rem;
+    width: 6rem;
+    background-color: #3498db;
+    border: .2rem solid #3498db;
+    border-radius: .4rem;
+    margin: 1rem .4rem;
 }
