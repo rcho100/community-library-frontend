@@ -106,24 +106,12 @@ class Users {
                         <button type="submit" class="return-button">Return Book</button>
                     </div>
                     <div class="books-container">
-                        <button id="sort-btn">Sort by Author Name</button>
-                        <table class="main-table">
-                            <thead>
-                                <th>Title</th>
-                                <th>Author</th>
-                                <th>Available</th>
-                            </thead>
-                            <tbody class="table-body">
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </main>
         `
         this.main = document.getElementsByTagName("main")[0]
-
         this.container.style.fontSize = "1.5rem"
-        this.main.style.padding = "5%"
         let displayCurrentlyBorrowed = document.querySelector(".currently-borrowed")
         if (this.currentlyBorrowed) {
             displayCurrentlyBorrowed.setAttribute('data-borrowed-id', `${this.currentlyBorrowed.id}`)
@@ -131,21 +119,7 @@ class Users {
         }
         let displayBooks = new Books(this.token, displayCurrentlyBorrowed)
         let sortBtn = document.querySelector("#sort-btn")
-        sortBtn.addEventListener('click', (e) => {
-            
-            displayBooks.books.sort((a, b) => {
-                let firstAuthor = a.author.split(' ')[a.author.split(' ').length - 1]
-                let secondAuthor = b.author.split(' ')[b.author.split(' ').length - 1]
-                
-                if (firstAuthor < secondAuthor) {
-                    return -1;
-                }
-                if (firstAuthor > secondAuthor) {
-                    return 1;
-                }
-                return 0;
-            })
-            displayBooks.render()
-        })
+        
+        displayBooks.render()
     }
 }

@@ -113,11 +113,6 @@ header {
     color: purple;
 }
 
-.current-and-all-books {
-    display: flex;
-    justify-content: space-around;
-}
-
 .current-and-all-books h3 {
     margin: 1rem 0;
 }
@@ -153,20 +148,6 @@ li {
     color: white;
 }
 
-.books-container {
-    width: 45%;
-}
-
-table {
-    border-collapse: separate;
-    border-spacing: 0.5em 0.5em;
-}
-
-tbody > tr:hover {
-    color: orange;
-    cursor: pointer;
-}
-
 /* Modal */
 .bg-modal {
     width: 100%;
@@ -198,4 +179,63 @@ tbody > tr:hover {
     border: .2rem solid #3498db;
     border-radius: .4rem;
     margin: 1rem .4rem;
+}
+
+main {
+    margin: 2.5rem;
+}
+
+.books-container {
+    /* width: 75%%; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.library-book {
+    margin: 1.5rem;
+    width: 14rem;
+}
+
+.library-book p {
+    width: 11rem;
+}
+
+.book-drawing {
+    display: grid;
+    grid-template-columns: 1rem 10rem;
+    grid-template-areas: 
+        "spine cover"
+        "footer footer"
+        "author author"
+        "available available"
+    ;
+    margin: 0.2rem;
+}
+
+.book-drawing div {
+    border: 0.1rem solid black;
+}
+
+.book-drawing-cover {
+    grid-area: cover;
+    height: 10rem;
+    background-color: lightgreen;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.3rem;
+}
+
+.book-drawing-spine {
+    grid-area: spine;
+    background-color: #4A4238;
+    border-top-left-radius: 0.3rem;
+}
+
+.book-drawing-footer {
+    grid-area: footer;
+    padding: 0.2rem;
+    background-color: lightgray;
+    border-bottom-left-radius: 0.3rem;
 }

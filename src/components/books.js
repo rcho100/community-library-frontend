@@ -39,58 +39,65 @@ class Books {
     render() {
         console.log('all books', this.books)
 
-        const tableData = this.books.map(book => {
+        this.booksContainer.innerHTML = this.books.map(book => {
             return `
-            <tr data-id=${book.id}>
-              <td class="book-title">${book.title}</td>
-              <td class="book-author">${book.author}</td>
-              <td class="book-availability">${book.available}</td>
-            </tr>`
+                <div id=${book.id} class="library-book">
+                    <div class="book-drawing">
+                        <div class="book-drawing-cover">${book.title}</div>
+                        <div class="book-drawing-spine"></div>
+                        <div class="book-drawing-footer"></div>
+                    </div>
+                    <div class="additional-book-info">
+                        <p>${book.author}</p>
+                        ${book.available ? "<button class='borrow-btn'>Borrow</button>" : "<p>Currently Out</p>"}
+                    </div>
+                </div>
+            `
         }).join('')
 
-        this.tableBody.innerHTML = tableData
-        let tableRows = document.querySelectorAll("tbody > tr")
-        tableRows.forEach(element => element.addEventListener('dblclick', this.borrowModal.bind(this)));        
+        const libraryBook = document.querySelectorAll('.library-book')
+        libraryBook.forEach(btn => btn.addEventListener('click', this.borrowModal.bind(this)));   
     }
 
     borrowModal(e) {
-        if (this.displayCurrentlyBorrowed.innerText !== "No book borrowed currently") {
-            alert("You can only borrow one book at a time. Please first return currently borrowed book to borrow another book.")   
-        } else if (e.currentTarget.cells[2].innerText === "false") {
-            alert("Sorry, this book is currently unavailable.")
-        } else {
-            selectedTableRow = e.target.parentNode
-            let bookID = selectedTableRow.dataset.id
-            let modalContent = document.querySelector(".modal-content")
-            modalContent.innerHTML = `
-                <p>Would you like to borrow this book?</p>
-                <p id="selected-book"></p>
-                <button id="yes" type="button">Yes</button>
-                <button id="no" type="button">No</button>
-            `
-            bgModal = document.querySelector(".bg-modal")
-            bgModal.style.display = "block"
-
-            bookTitle = selectedTableRow.querySelector(".book-title")
-            bookAuthor = selectedTableRow.querySelector(".book-author")
-            bookAvailability = selectedTableRow.querySelector(".book-availability")
-
-            const selectedBook = modalContent.querySelector("#selected-book")
-            selectedBook.innerText = `${bookTitle.innerText} - ${bookAuthor.innerText}`
-
-            document.querySelector("#no").addEventListener('click',() => bgModal.style.display = "none")
-            document.querySelector("#yes").addEventListener('click', () => this.borrowBook(bookID))
+        if (e.target.className == 'borrow-btn') {
+            if (this.displayCurrentlyBorrowed.innerText !== "No book borrowed currently") {
+                alert("You can only borrow one book at a time. Please first return currently borrowed book to borrow another book.")   
+            } else {
+                let modalContent = document.querySelector(".modal-content")
+                modalContent.innerHTML = `
+                    <p>Would you like to borrow this book?</p>
+                    <p id="selected-book-display"></p>
+                    <button id="yes" type="button">Yes</button>
+                    <button id="no" type="button">No</button>
+                `
+                bgModal = document.querySelector(".bg-modal")
+                bgModal.style.display = "block"
+    
+                let bookID = e.target.parentNode.parentNode.getAttribute('id')
+                let selectedBook = this.books.find(book => book.id == bookID)
+                const selectedBookDisplay = modalContent.querySelector("#selected-book-display")
+                selectedBookDisplay.innerText = `${selectedBook.title} - ${selectedBook.author}`
+    
+                document.querySelector("#no").addEventListener('click',() => bgModal.style.display = "none")
+                document.querySelector("#yes").addEventListener('click', () => this.borrowBook(selectedBook))
+            }
         }
     }
 
-    borrowBook(bookID) {
-        this.adapter.borrow(bookID, this.token)
+    borrowBook(selectedBook) {
+        this.adapter.borrow(selectedBook.id, this.token)
         .then(json => {
-            bookAvailability.innerText = json.data.attributes.available
-            this.displayCurrentlyBorrowed = document.querySelector(".currently-borrowed")
-            this.displayCurrentlyBorrowed.setAttribute('data-borrowed-ID', `${json.data.attributes.id}`)
+            let additionalInfo = document.getElementById(json.data.attributes.id).querySelector('.additional-book-info')
+            additionalInfo.querySelector('button').remove()
 
+            let updatedStatus = document.createElement('p')
+            updatedStatus.innerText = 'Currently Out'
+            additionalInfo.appendChild(updatedStatus)
+
+            this.displayCurrentlyBorrowed.setAttribute('data-borrowed-ID', `${json.data.attributes.id}`)
             this.displayCurrentlyBorrowed.innerText = `${json.data.attributes.title} - ${json.data.attributes.author}`
+
             return bgModal.style.display = "none"
         })
         .catch(error => console.log(error))
@@ -105,10 +112,13 @@ class Books {
             console.log('this inside returnBook if', this)
             this.adapter.returning(bookID, this.token)
             .then(json => {
-                console.log('returned book json', json)
-                // get table row by data-id and update book availability displayed in book list
-                selectedTableRow = document.querySelectorAll(`[data-id='${json.data.attributes.id}']`)[0]
-                selectedTableRow.querySelector(".book-availability").textContent = `${json.data.attributes.available}`
+                let additionalInfo = document.getElementById(json.data.attributes.id).querySelector('.additional-book-info')
+                additionalInfo.querySelectorAll('p')[1].remove()
+
+                let updatedStatus = document.createElement('button')
+                updatedStatus.className = 'borrow-btn'
+                updatedStatus.innerText = 'Borrow'
+                additionalInfo.appendChild(updatedStatus)
 
                 //update book borrowed section to 'No book borrowed currently' and change data-borrowed-id to '0'
                 this.displayCurrentlyBorrowed.innerText = "No book borrowed currently"
