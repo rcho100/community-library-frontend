@@ -110,10 +110,13 @@ class Books {
             console.log('this inside returnBook if', this)
             this.adapter.returning(bookID, this.token)
             .then(json => {
-                console.log('returned book json', json)
-                // get table row by data-id and update book availability displayed in book list
-                selectedTableRow = document.querySelectorAll(`[data-id='${json.data.attributes.id}']`)[0]
-                selectedTableRow.querySelector(".book-availability").textContent = `${json.data.attributes.available}`
+                let additionalInfo = document.getElementById(json.data.attributes.id).querySelector('.additional-book-info')
+                additionalInfo.querySelectorAll('p')[1].remove()
+
+                let updatedStatus = document.createElement('button')
+                updatedStatus.className = 'borrow-btn'
+                updatedStatus.innerText = 'Borrow'
+                additionalInfo.appendChild(updatedStatus)
 
                 //update book borrowed section to 'No book borrowed currently' and change data-borrowed-id to '0'
                 this.displayCurrentlyBorrowed.innerText = "No book borrowed currently"
