@@ -49,7 +49,7 @@ class Books {
                     </div>
                     <div class="additional-book-info">
                         <p>${book.author}</p>
-                        <p>${book.available ? "Available" : "Currently Out"}</p>
+                        ${book.available ? "<button class='borrow-btn'>Borrow</button>" : "<p>Currently Out</p>"}
                     </div>
                 </div>
             `
