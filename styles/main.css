@@ -148,16 +148,6 @@ li {
     color: white;
 }
 
-table {
-    border-collapse: separate;
-    border-spacing: 0.5em 0.5em;
-}
-
-tbody > tr:hover {
-    color: orange;
-    cursor: pointer;
-}
-
 /* Modal */
 .bg-modal {
     width: 100%;
