@@ -55,31 +55,33 @@ class Books {
             `
         }).join('')
 
-        const borrowBtn = document.querySelectorAll(".borrow-btn")
-        borrowBtn.forEach(btn => btn.addEventListener('click', this.borrowModal.bind(this)));   
+        const libraryBook = document.querySelectorAll('.library-book')
+        libraryBook.forEach(btn => btn.addEventListener('click', this.borrowModal.bind(this)));   
     }
 
     borrowModal(e) {
-        if (this.displayCurrentlyBorrowed.innerText !== "No book borrowed currently") {
-            alert("You can only borrow one book at a time. Please first return currently borrowed book to borrow another book.")   
-        } else {
-            let modalContent = document.querySelector(".modal-content")
-            modalContent.innerHTML = `
-                <p>Would you like to borrow this book?</p>
-                <p id="selected-book-display"></p>
-                <button id="yes" type="button">Yes</button>
-                <button id="no" type="button">No</button>
-            `
-            bgModal = document.querySelector(".bg-modal")
-            bgModal.style.display = "block"
-
-            let bookID = e.target.parentNode.parentNode.getAttribute('id')
-            let selectedBook = this.books.find(book => book.id == bookID)
-            const selectedBookDisplay = modalContent.querySelector("#selected-book-display")
-            selectedBookDisplay.innerText = `${selectedBook.title} - ${selectedBook.author}`
-
-            document.querySelector("#no").addEventListener('click',() => bgModal.style.display = "none")
-            document.querySelector("#yes").addEventListener('click', () => this.borrowBook(selectedBook))
+        if (e.target.className == 'borrow-btn') {
+            if (this.displayCurrentlyBorrowed.innerText !== "No book borrowed currently") {
+                alert("You can only borrow one book at a time. Please first return currently borrowed book to borrow another book.")   
+            } else {
+                let modalContent = document.querySelector(".modal-content")
+                modalContent.innerHTML = `
+                    <p>Would you like to borrow this book?</p>
+                    <p id="selected-book-display"></p>
+                    <button id="yes" type="button">Yes</button>
+                    <button id="no" type="button">No</button>
+                `
+                bgModal = document.querySelector(".bg-modal")
+                bgModal.style.display = "block"
+    
+                let bookID = e.target.parentNode.parentNode.getAttribute('id')
+                let selectedBook = this.books.find(book => book.id == bookID)
+                const selectedBookDisplay = modalContent.querySelector("#selected-book-display")
+                selectedBookDisplay.innerText = `${selectedBook.title} - ${selectedBook.author}`
+    
+                document.querySelector("#no").addEventListener('click',() => bgModal.style.display = "none")
+                document.querySelector("#yes").addEventListener('click', () => this.borrowBook(selectedBook))
+            }
         }
     }
 
