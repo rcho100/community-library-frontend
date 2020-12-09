@@ -41,7 +41,7 @@ class Books {
 
         this.booksContainer.innerHTML = this.books.map(book => {
             return `
-                <div class="library-book">
+                <div id=${book.id} class="library-book">
                     <div class="book-drawing">
                         <div class="book-drawing-cover">${book.title}</div>
                         <div class="book-drawing-spine"></div>
@@ -55,34 +55,28 @@ class Books {
             `
         }).join('')
 
-        const libraryBooks = document.querySelectorAll("library-book")
-        libraryBooks.forEach(libraryBook => libraryBook.addEventListener('dblclick', this.borrowModal.bind(this)));   
+        const borrowBtn = document.querySelectorAll(".borrow-btn")
+        borrowBtn.forEach(btn => btn.addEventListener('click', this.borrowModal.bind(this)));   
     }
 
     borrowModal(e) {
         if (this.displayCurrentlyBorrowed.innerText !== "No book borrowed currently") {
             alert("You can only borrow one book at a time. Please first return currently borrowed book to borrow another book.")   
-        } else if (e.currentTarget.cells[2].innerText === "false") {
-            alert("Sorry, this book is currently unavailable.")
         } else {
-            selectedTableRow = e.target.parentNode
-            let bookID = selectedTableRow.dataset.id
             let modalContent = document.querySelector(".modal-content")
             modalContent.innerHTML = `
                 <p>Would you like to borrow this book?</p>
-                <p id="selected-book"></p>
+                <p id="selected-book-display"></p>
                 <button id="yes" type="button">Yes</button>
                 <button id="no" type="button">No</button>
             `
             bgModal = document.querySelector(".bg-modal")
             bgModal.style.display = "block"
 
-            bookTitle = selectedTableRow.querySelector(".book-title")
-            bookAuthor = selectedTableRow.querySelector(".book-author")
-            bookAvailability = selectedTableRow.querySelector(".book-availability")
-
-            const selectedBook = modalContent.querySelector("#selected-book")
-            selectedBook.innerText = `${bookTitle.innerText} - ${bookAuthor.innerText}`
+            let bookID = e.target.parentNode.parentNode.getAttribute('id')
+            let selectedBook = this.books.find(book => book.id == bookID)
+            const selectedBookDisplay = modalContent.querySelector("#selected-book-display")
+            selectedBookDisplay.innerText = `${selectedBook.title} - ${selectedBook.author}`
 
             document.querySelector("#no").addEventListener('click',() => bgModal.style.display = "none")
             document.querySelector("#yes").addEventListener('click', () => this.borrowBook(bookID))
