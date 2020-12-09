@@ -79,18 +79,23 @@ class Books {
             selectedBookDisplay.innerText = `${selectedBook.title} - ${selectedBook.author}`
 
             document.querySelector("#no").addEventListener('click',() => bgModal.style.display = "none")
-            document.querySelector("#yes").addEventListener('click', () => this.borrowBook(bookID))
+            document.querySelector("#yes").addEventListener('click', () => this.borrowBook(selectedBook))
         }
     }
 
-    borrowBook(bookID) {
-        this.adapter.borrow(bookID, this.token)
+    borrowBook(selectedBook) {
+        this.adapter.borrow(selectedBook.id, this.token)
         .then(json => {
-            bookAvailability.innerText = json.data.attributes.available
-            this.displayCurrentlyBorrowed = document.querySelector(".currently-borrowed")
-            this.displayCurrentlyBorrowed.setAttribute('data-borrowed-ID', `${json.data.attributes.id}`)
+            let additionalInfo = document.getElementById(json.data.attributes.id).querySelector('.additional-book-info')
+            additionalInfo.querySelector('button').remove()
 
+            let updatedStatus = document.createElement('p')
+            updatedStatus.innerText = 'Currently Out'
+            additionalInfo.appendChild(updatedStatus)
+
+            this.displayCurrentlyBorrowed.setAttribute('data-borrowed-ID', `${json.data.attributes.id}`)
             this.displayCurrentlyBorrowed.innerText = `${json.data.attributes.title} - ${json.data.attributes.author}`
+
             return bgModal.style.display = "none"
         })
         .catch(error => console.log(error))
