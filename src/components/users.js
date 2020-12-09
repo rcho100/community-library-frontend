@@ -119,21 +119,7 @@ class Users {
         }
         let displayBooks = new Books(this.token, displayCurrentlyBorrowed)
         let sortBtn = document.querySelector("#sort-btn")
-        sortBtn.addEventListener('click', (e) => {
-            
-            displayBooks.books.sort((a, b) => {
-                let firstAuthor = a.author.split(' ')[a.author.split(' ').length - 1]
-                let secondAuthor = b.author.split(' ')[b.author.split(' ').length - 1]
-                
-                if (firstAuthor < secondAuthor) {
-                    return -1;
-                }
-                if (firstAuthor > secondAuthor) {
-                    return 1;
-                }
-                return 0;
-            })
-            displayBooks.render()
-        })
+        
+        displayBooks.render()
     }
 }
