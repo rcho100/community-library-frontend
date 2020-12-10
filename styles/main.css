@@ -149,7 +149,8 @@ li {
 
 .current-and-all-books button:hover {
     cursor: pointer;
-    background-color: #3497da91;
+    transform: translateY(-1px);
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 /* Modal */
