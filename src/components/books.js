@@ -61,7 +61,7 @@ class Books {
 
     borrowModal(e) {
         if (e.target.className == 'borrow-btn') {
-            if (this.displayCurrentlyBorrowed.innerText !== "No book borrowed currently") {
+            if (this.displayCurrentlyBorrowed.innerText !== "No book borrowed currently.") {
                 alert("You can only borrow one book at a time. Please first return currently borrowed book to borrow another book.")   
             } else {
                 let modalContent = document.querySelector(".modal-content")
@@ -105,7 +105,7 @@ class Books {
 
     returnBook(e) {
         e.preventDefault();
-        if (this.displayCurrentlyBorrowed.innerText === "No book borrowed currently") {
+        if (this.displayCurrentlyBorrowed.innerText === "No book borrowed currently.") {
             alert("You do not have a book to return at this time.")   
         } else {
             let bookID = this.displayCurrentlyBorrowed.dataset.borrowedId
@@ -120,8 +120,8 @@ class Books {
                 updatedStatus.innerText = 'Borrow'
                 additionalInfo.appendChild(updatedStatus)
 
-                //update book borrowed section to 'No book borrowed currently' and change data-borrowed-id to '0'
-                this.displayCurrentlyBorrowed.innerText = "No book borrowed currently"
+                //update book borrowed section to 'No book borrowed currently.' and change data-borrowed-id to '0'
+                this.displayCurrentlyBorrowed.innerText = "No book borrowed currently."
                 this.displayCurrentlyBorrowed.dataset.borrowedId = "0"
             })
             .catch(error => console.log(error))
