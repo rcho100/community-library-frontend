@@ -38,7 +38,7 @@ p {
     font-size: 1.5rem;
 }
 
-.login-form {
+.form {
     border-radius: 2rem;
     margin: auto;
     width: 90%;
@@ -49,32 +49,20 @@ p {
     margin-top: 1.5rem;
 }
 
-.login-form h3 {
-    margin-bottom: 1rem;
-}
-
-.signup-form {
-    border-radius: 2rem;
-    margin: auto;
-    width: 90%;
-    padding: 5rem;
-    text-align: center;
-    background-color: white;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.3);
-    margin-top: 1.5rem;
-}
-
-.signup-form h3 {
-    margin-top: .5rem;
-    margin-bottom: 1rem;
-}
-
-.entry-forms input {
+.form input {
     border-radius: 1rem;
     border: .2rem solid #f0f0f0;
     display: block;
     width: 100%;
     padding: 1rem;
+}
+
+.form h3 {
+    margin-bottom: 1rem;
+}
+
+.signup-form h3 {
+    margin-top: .5rem;
 }
 
 .entry-forms button {
@@ -191,7 +179,6 @@ main {
 }
 
 .books-container {
-    /* width: 75%%; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
