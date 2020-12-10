@@ -105,12 +105,17 @@ header {
 .signout {
     display: flex;
     flex-direction: row-reverse;
+    background-color: #e664a1;
+    border-color: #e664a1;
+    font-size: 1.7rem;
 }
 
 .signout:hover {
     cursor: pointer;
-    border-bottom: .3rem black solid;
-    color: purple;
+    background-color: #c864e6;
+    background-color: #c864e6;
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 .current-and-all-books h3 {
@@ -135,17 +140,17 @@ li {
 }
 
 .current-and-all-books button {
-    padding: 1rem;
+    padding: .7rem .9rem;
     background-color: #3498db;
     border: .2rem solid #3498db;
-    border-radius: .4rem;
-    margin: 1rem .4rem;
+    border-radius: .5rem;
+    margin: .3rem .4rem;
 }
 
 .current-and-all-books button:hover {
     cursor: pointer;
-    background-color: purple;
-    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 /* Modal */
@@ -196,6 +201,9 @@ main {
 .library-book {
     margin: 1.5rem;
     width: 14rem;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
 }
 
 .library-book p {
