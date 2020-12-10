@@ -95,13 +95,13 @@ class Users {
                     <div class="current-book-section">
                         <h3>Welcome ${currentUser.name}!</h3>
                         <p>
-                            Please double click to borrow a book from the list. If you are already borrowing a book, please return the book before borrowing another book.
+                            Please click the borrow button if you wish to borrow a book. If you are already borrowing a book, please return the book before borrowing another book.
                         </p>    
                         <p>
                             Book you are currently borrowing:
                         </p>
                         <ul>
-                            <li class="currently-borrowed" data-borrowed-id="0">No book borrowed currently</li>
+                            <li class="currently-borrowed" data-borrowed-id="0">No book borrowed currently.</li>
                         </ul>
                         <button type="submit" class="return-button">Return Book</button>
                     </div>
